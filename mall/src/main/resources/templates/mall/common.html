@@ -55,6 +55,7 @@
                     <i class="fa fa-user-circle"></i>&nbsp;
                     <span th:if="${session.user == null}">请登陆</span>
                     <span th:if="${session.user != null}" th:text="'欢迎您!&nbsp;' + ${session.user.username}">请登陆</span>
+                    <span th:if="${session.user != null}" th:text="'欢迎您！开发者@jaken;'">用户栏</span>
                 </a>
                 <dl class="layui-nav-child">
                     <dd th:if="${session.user != null}"><a href="/mall/user/logout.do"><i class="fa fa-sign-out"></i> 退出登录</a></dd>
