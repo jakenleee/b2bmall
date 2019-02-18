@@ -8,7 +8,7 @@ Source Database       : mall
 
 Target Server Type    : MYSQL
 Target Server Version : 50713
-File Encoding         : 65001
+File Encoding         : 65002
 
 Date: 2017-11-26 16:23:18
 */
