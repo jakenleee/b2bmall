@@ -30,7 +30,7 @@
         </div>
         <div class="layui-row" id="order_form">
             <div class="layui-col-md5 layui-col-sm5 layui-col-xs12 layui-col-md-offset7">
-                <form class="layui-form" action="../order/submit.do">
+                <form class="layui-form"  name="submit" action="../order/submit.do">
                     <div class="layui-form-item">
                         <label class="layui-form-label">收货人：</label>
                         <div class="layui-input-block">
@@ -118,14 +118,18 @@
 
         //移除购物车
         function remove(btn, productId, subTotal) {
+
             $.get("delCart.do?productId=" + productId, function (data) {
                 if (data.state == 0) {
                     layer.msg("删除成功！");
                     $(btn).parent().parent().fadeOut();
                     total -= subTotal;
                     $("#total").html("总价：￥" + total);
-                } else {
+                } else if (total == 0){
+                    $(submit).hide();
+                } {
                     layer.msg(data.message);
+
                 }
             })
         }

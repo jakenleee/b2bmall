@@ -27,6 +27,13 @@
         <!--<ul class="layui-nav layui-layout-left">-->
         <!---->
         <!--</ul>-->
+        <ul class="layui-nav layui-layout-left" lay-filter="">
+            <li class="layui-nav-item layui-this" ><a href="">首页</a> </li>
+            <li class="layui-nav-item" ><a href="">发布询价</a> </li>
+            <li class="layui-nav-item " ><a href="">查看报价</a> </li>
+            <li class="layui-nav-item" ><a href="">订单查看</a> </li>
+        </ul>
+
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item" style="color:#393D49;">
                 <a href="javascript:;">分类</a>
@@ -76,6 +83,41 @@
     <!-- 底部固定区域 -->
     © jaken 2019
     <a href="/mall/admin/toLogin.html">后台管理系统</a>
+</div>
+
+<!--左侧 导航栏模块-->
+<div class="layui-layout-left" th:fragment="left">
+    <script>
+        var layer;
+        layui.use(["layer","element"],function () {
+            layer = layer.layer;
+        })
+    </script>
+    <ul class="layui-nav layui-nav-tree layui-nav-side layui-bg-cyan">
+        <li class="layui-nav-item layui-nav-itemed">
+            <a href="javascript:;">默认商品展示</a>
+            <dl class="layui-nav-child">
+                <dd> <a href="javascript:;">热销商品</a></dd>
+                <dd> <a href="javascript:;">推荐商品</a></dd>
+            </dl>
+        </li>
+        <li class="layui-nav-item">
+            <a>分类</a>
+            <dl class="layui-nav-child">
+                <dd><a href="">优质油品</a></dd>
+                <dd><a href="">过滤系统</a></dd>
+                <dd><a href="">雨刮系统</a></dd>
+                <dd><a href="">点火系统</a></dd>
+                <dd><a href="">冷却系统</a></dd>
+                <dd><a href="">敬请期待</a></dd>
+            </dl>
+        </li>
+
+        <li class="layui-nav-item"><a href="">推广系列</a></li>
+        <li class="layui-nav-item"><a href="">待定系列</a></li>
+
+    </ul>
+
 </div>
 
 </body>
