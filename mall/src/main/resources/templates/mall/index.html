@@ -17,6 +17,8 @@
 <div th:replace="mall/common::head"></div>
 <!--页面主体内容-->
 <div class="layui-container" id="content">
+
+    <div th:replace="mall/common::left"></div>
     <!--热门商品-->
     <div class="layui-row">
         <div class="layui-col-md12"><h1 class="site-h1"><i class="fa fa-heart" style="color: #FF5722;"></i> &nbsp;热门商品
@@ -31,9 +33,7 @@
             &nbsp;最新商品</h1></div>
     </div>
     <div class="layui-row" style="text-align: center;">
-        <div class="layui-row" id="product_new">
-
-        </div>
+        <div class="layui-row" id="product_new"></div>
         <a class="more" href="javascript: more();">点击加载更多</a>
     </div>
     <script>
