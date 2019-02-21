@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>model</title>
+    <aside class="main-sidebar">
+        <section class="sidebar">
+            <!-- Sidebar user panel -->
+            <div class="user-panel">
+                <div class="pull-left image">
+                    <img src="https://file-demo.casstime.com/systemMgr/static/index/dist/img/user2-160x160.jpg?version=1550484300060" class="img-circle" alt="User Image">
+                </div>
+                <div class="pull-left info">
+                    <p>王明敏</p>
+                    <a href="#"><i class="fa fa-circle text-success"></i>在线</a>
+                </div>
+            </div>
+
+            <ul class="sidebar-menu">
+                <li class="header"></li>
+
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-dashboard"></i> <span name="moduleName" style="font-size:13px;">询价管理</span> <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li id="CC_ANALYZE" txt="译码管理" src="/decode-web/static/index.html#/" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 译码管理</a>
+                        </li>
+                        <li id="INQUIRY_TRACK" txt="询价单跟踪" src="/inquiryWeb/static/index.html#/tracing" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 询价单跟踪</a>
+                        </li>
+                        <li id="settingsProvider" txt="报价供应商设置" src="/agentBuy/admin/settingsProvider" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 报价供应商设置</a>
+                        </li>
+                        <li id="anonyquotes" txt="匿名询报价" src="/systemMgr/anonymous/anonyquotes" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 匿名询报价</a>
+                        </li>
+                        <li id="systemAssignedSupplier" txt="系统指定供应商" src="/systemMgr/systemAssignedSupplier/index" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 系统指定供应商</a>
+                        </li>
+                        <li id="dlistConfig" txt="供应商评分管理" src="/systemMgr/dlistConfig/index" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 供应商评分管理</a>
+                        </li>
+                        <li id="supplierLoad" txt="供应商负荷管理" src="/systemMgr/supplierLoad/index" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 供应商负荷管理</a>
+                        </li>
+                        <li id="distribute" txt="询价单分配状态管理" src="/systemMgr/distribute/index" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 询价单分配状态管理</a>
+                        </li>
+                        <li id="garageConfig" txt="维修厂预期可分配供应商" src="/systemMgr/garageConfig/index" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 维修厂预期可分配供应商</a>
+                        </li>
+                        <li id="customize" txt="事故单采购分配状态" src="/systemMgr/customize/index" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 事故单采购分配状态</a>
+                        </li>
+                        <li id="DECODE_CONFIG" txt="译码配置" src="/decode-web/static/index.html#/decode-config" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 译码配置</a>
+                        </li>
+                        <li id="resolveUsers" txt="译码员管理" src="/agentBuy/admin/resolveUsers" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 译码员管理</a>
+                        </li>
+                        <li id="DECODE_AWOKE" txt="译码提醒" src="/agentBuy/decodeAwokes" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 译码提醒</a>
+                        </li>
+                        <li id="localCity" txt="本地规则设置" src="/systemMgr/localcity/index" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 本地规则设置</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-dashboard"></i> <span name="moduleName" style="font-size:13px;">订单管理</span> <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li id="OrderListForPlatform" txt="订单列表" src="/orders/manager/order/platform/list" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 订单列表</a>
+                        </li>
+                        <li id="PrintStatistics" txt="订单条码打印统计" src="/systemMgr/printStatistics/index" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 订单条码打印统计</a>
+                        </li>
+                        <li id="logisticsOrder" txt="物流中转订单查询" src="/systemMgr/logisticsOrder/index" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 物流中转订单查询</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-dashboard"></i> <span name="moduleName" style="font-size:13px;">售后管理</span> <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li id="systemMgrAfterSaleList" txt="退货申请管理" src="/systemMgr/afterSale/list" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 退货申请管理</a>
+                        </li>
+                        <li id="SPACIAL_AFTER_SALE_MGR" txt="售后服务平台特殊例外设置" src="/systemMgr/specialAfterSaleManager/list" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 售后服务平台特殊例外设置</a>
+                        </li>
+                        <li id="AFTER_SALE_SERVICE" txt="商家售后服务查询" src="/systemMgr/afterSaleQueryManager/list" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 商家售后服务查询</a>
+                        </li>
+                        <li id="WARRANTY_MGR" txt="开思质保查询" src="/systemMgr/warranty/warrantysearch" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 开思质保查询</a>
+                        </li>
+                        <li id="WARRANTY_MGR_INFO" txt="开思质保管理" src="/systemMgr/warranty/warrantyinfo" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 开思质保管理</a>
+                        </li>
+                        <li id="COMPENSATION_INFO" txt="开思假一罚N查询" src="/systemMgr/compensation/compensationsearch" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 开思假一罚N查询</a>
+                        </li>
+                        <li id="COMPENSATION_MGR" txt="开思假一罚N管理" src="/systemMgr/compensation/compensationManage" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 开思假一罚N管理</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-dashboard"></i> <span name="moduleName" style="font-size:13px;">物流管理</span> <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li id="tmscontroller" txt="物流费流水管理" src="/systemMgr/tmscontroller/tmsfee/record/index" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 物流费流水管理</a>
+                        </li>
+                        <li id="templates" txt="物流费模板管理" src="/tmsweb/templates/init" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 物流费模板管理</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="treeview active">
+                    <a href="#">
+                        <i class="fa fa-dashboard"></i> <span name="moduleName" style="font-size:13px;">财务管理</span> <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li id="searchTradeRecords" txt="交易记录查询" src="/financial/searchTradeRecords" class="">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 交易记录查询</a>
+                        </li>
+                        <li id="searchBillListPlatform" txt="电子对账单" src="/bill/system/billlist" class="">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 电子对账单</a>
+                        </li>
+                        <li id="searchCreditPlatform" txt="客户额度管理" src="/partycredit/systemMgr/list" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 客户额度管理</a>
+                        </li>
+                        <li id="systemMgr/financial/list" txt="白条流水统计" src="/systemMgr/financial/list" class="">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 白条流水统计</a>
+                        </li>
+                        <li id="setFinancePlatform" txt="融资服务设置" src="/financial/setFinancePlatform" class="">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 融资服务设置</a>
+                        </li>
+                        <li id="billInvoiceApplicationList" txt="小额开票处理记录" src="/bill/system/invoice/application/list" class="">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 小额开票处理记录</a>
+                        </li>
+                        <li id="invoice/list" txt="发票申请管理" src="/systemMgr/financial/invoice/list" class="">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 发票申请管理</a>
+                        </li>
+                        <li id="PAYMENT_METHOD_CONFIG" txt="支付平台管理(担保交易)" src="/payment/system/paymentmethod/pcindex" class="">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 支付平台管理(担保交易)</a>
+                        </li>
+                        <li id="APP_PAYMENT_METHOD_CONFIG" txt="APP支付平台管理（担保交易）" src="/payment/system/apppaymentmethod/appindex" class="">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> APP支付平台管理（担保交易）</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-dashboard"></i> <span name="moduleName" style="font-size:13px;">钱包管理</span> <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li id="casswalletBalance" txt="钱包余额管理" src="/casswallet/systemMgr/casswallet/balance" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 钱包余额管理</a>
+                        </li>
+                        <li id="casswalletTradeList" txt="钱包交易查询" src="/casswallet/systemMgr/casswallet/trade/list" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 钱包交易查询</a>
+                        </li>
+                        <li id="cw_channel_account_list" txt="通道账户管理" src="/casswallet/systemMgr/channel/account/list" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 通道账户管理</a>
+                        </li>
+                        <li id="cw_sys_list" txt="钱包账户管理" src="/casswallet/systemMgr/list" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 钱包账户管理</a>
+                        </li>
+                        <li id="casswallet_autoRegister_manage" txt="自动注册管理" src="/casswallet/systemMgr/auto/register" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 自动注册管理</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-dashboard"></i> <span name="moduleName" style="font-size:13px;">商品管理</span> <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li id="PRODUCT_SEARCH" txt="商品查询" src="/systemMgr/products" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 商品查询</a>
+                        </li>
+                        <li id="REPLENCE_PART" txt="替换件查询" src="/systemMgr/oereplacepart/list" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 替换件查询</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-dashboard"></i> <span name="moduleName" style="font-size:13px;">平台维护</span> <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li id="BRAND_MANAGER" txt="品牌管理" src="/systemMgr/brand" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 品牌管理</a>
+                        </li>
+                        <li id="SYSEM_MANAGER_COMPANY_ZONE_AMDIN" txt="战区管理" src="/systemMgr/companyzones/pages" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 战区管理</a>
+                        </li>
+                        <li id="SYSTEM_MANAGER_COMPANY_GROUP_MENU" txt="集团管理" src="/systemMgr/companygroups/pages" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 集团管理</a>
+                        </li>
+                        <li id="SYSTEM_MANAGER_COMPANY_MENU" txt="维修厂列表" src="/systemMgr/companies/?partyCategory=GARAGE" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 维修厂列表</a>
+                        </li>
+                        <li id="SYSTEM_MANAGER_COMPANY_SUPPLIER_MENU" txt="供应商列表" src="/systemMgr/companies/?partyCategory=SUPPLIER" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 供应商列表</a>
+                        </li>
+                        <li id="MASTER_CATA_SEARCH" txt="配件基础分类查询" src="/systemMgr/businessCategory/search" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 配件基础分类查询</a>
+                        </li>
+                        <li id="BUSINESS_CATA_MGR" txt="配件业务分类管理" src="/systemMgr/businessCategory/mgr" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 配件业务分类管理</a>
+                        </li>
+                        <li id="STORE_MGR" txt="店铺管理" src="/systemMgr/store/activate" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 店铺管理</a>
+                        </li>
+                        <li id="partsLimitSale" txt="售后限售管理" src="/systemMgr/unsaleable/customservice/index" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 售后限售管理</a>
+                        </li>
+                        <li id="USER_LIST" txt="用户列表" src="/systemMgr/users/list" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 用户列表</a>
+                        </li>
+                        <li id="findUserLevels" txt="维修厂等级配置" src="/systemMgr/companylevels/list" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 维修厂等级配置</a>
+                        </li>
+                        <li id="CC_SYS_CONFIG" txt="配置项管理" src="/systemMgr/config" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 配置项管理</a>
+                        </li>
+                        <li id="userBlackPlatformList" txt="黑名单" src="/systemMgr/companyblack/pages" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 黑名单</a>
+                        </li>
+                        <li id="SELLER_EXPORT_EXCEL" txt="导出管理" src="/systemMgr/exportExcel/list" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 导出管理</a>
+                        </li>
+                        <li id="userWhiteList" txt="白名单" src="/systemMgr/companywhite/pages" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 白名单</a>
+                        </li>
+                        <li id="CC_API_LIST" txt="接口列表" src="/admin/apiList" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 接口列表</a>
+                        </li>
+                        <li id="expectionRecord" txt="订单异常列表" src="/sellerMgr/orderMonitor/expectionRecord" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 订单异常列表</a>
+                        </li>
+                        <li id="CC_INFO_CHECK" txt="资料审核" src="/admin/enterpriseData/infoVerifyList" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 资料审核</a>
+                        </li>
+                        <li id="payOnlineDisSettingAdmin" txt="现付优惠设置" src="/storemgr/payOnlineDisSettingAdmin" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 现付优惠设置</a>
+                        </li>
+                        <li id="COUPON_ACTIVITY_RELATION" txt="优惠券活动关联配置" src="/systemMgr/couponActivitieRelation/list" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 优惠券活动关联配置</a>
+                        </li>
+                        <li id="GEO_COUNTYLEVELCITY_MANAGER" txt="县级市管理" src="/systemMgr/geos/countylevelcities" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 县级市管理</a>
+                        </li>
+                        <li id="CONTRACT_TEMPLATE_LIST" txt="合同模板管理" src="/systemMgr/contracttemplate/list" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 合同模板管理</a>
+                        </li>
+                        <li id="BASIC_DATA_MAINTENANCE" txt="基础数据维护" src="/maindata/admin/basicDataMaintenance" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 基础数据维护</a>
+                        </li>
+                        <li id="FEEDBACK_MANAGE" txt="反馈管理" src="/maindata/suggestion/" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 反馈管理</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-dashboard"></i> <span name="moduleName" style="font-size:13px;">权限管理</span> <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li id="NEW_ROLE_MANAGER" txt="角色管理" src="/systemMgr/roles/pages" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 角色管理</a>
+                        </li>
+                        <li id="NEW_RESOURCE_MANAGER" txt="资源管理" src="/systemMgr/resources/pages" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 资源管理</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-dashboard"></i> <span name="moduleName" style="font-size:13px;">用户反馈管理</span> <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li id="feedback" txt="反馈受理" src="/systemMgr/feedback/pages" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 反馈受理</a>
+                        </li>
+                        <li id="user_feedback_type" txt="反馈分类配置" src="/systemMgr/feedbacktypes/pages" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 反馈分类配置</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-dashboard"></i> <span name="moduleName" style="font-size:13px;">仓库管理</span> <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li id="store_facility_manage" txt="店铺仓库管理" src="/systemMgr/storeFacility" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 店铺仓库管理</a>
+                        </li>
+                        <li id="platForm_facility_manage" txt="平台仓库管理" src="/systemMgr/platFormFacility" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 平台仓库管理</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-dashboard"></i> <span name="moduleName" style="font-size:13px;">公告管理</span> <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li id="SYSTEM_NOTICE" txt="系统公告" src="/systemMgr/announcements/new" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 系统公告</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-dashboard"></i> <span name="moduleName" style="font-size:13px;">客户管理</span> <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li id="SYSTEM_GOLDCOIN_ACCOUNTS_MANAGER" txt="金币管理" src="/systemMgr/goldcoin/accountlist" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 金币管理</a>
+                        </li>
+                        <li id="POINT_MANAGER" txt="积分管理" src="/systemMgr/point/remain" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 积分管理</a>
+                        </li>
+                        <li id="POINT_ACTION_CONFIG" txt="积分行为配置" src="/systemMgr/pointActionConfigs/pages" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 积分行为配置</a>
+                        </li>
+                        <li id="POINT_PRODUCT_MANAGE" txt="积分商品管理" src="/pointshop/admin/product/page" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 积分商品管理</a>
+                        </li>
+                        <li id="GARAGE_PROFILE" txt="维修厂资质管理" src="/systemMgr/company_profile/garage/pages" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 维修厂资质管理</a>
+                        </li>
+                        <li id="SUPPLIER_PROFILE" txt="供应商资质管理" src="/systemMgr/company_profile/supplier/pages" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 供应商资质管理</a>
+                        </li>
+                        <li id="COUPON_MANAGER" txt="优惠券管理" src="/systemMgr/couponActivities/pages" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 优惠券管理</a>
+                        </li>
+                        <li id="SYSTEM_MANAGER_FUIOU_ACCOUNT_LIST" txt="富友账号管理" src="/systemMgr/fuiouaccounts/list" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 富友账号管理</a>
+                        </li>
+                        <li id="REGISTER_USER_EXPORT" txt="新注册用户管理" src="/systemMgr/userexports/list" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 新注册用户管理</a>
+                        </li>
+                        <li id="AGREEMENT_MANAGER" txt="合约管理" src="/systemMgr/agreement/pages" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 合约管理</a>
+                        </li>
+                        <li id="CUSTOMER_GROUP_MANAGER" txt="客户分组管理" src="/systemMgr/customergroup/pages" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 客户分组管理</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-dashboard"></i> <span name="moduleName" style="font-size:13px;">积分商城管理</span> <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li id="POINT_SHOP_PRODUCT" txt="积分商品管理" src="/pointshop/admin/product/v2/page" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 积分商品管理</a>
+                        </li>
+                        <li id="POINT_SHOP_ORDER" txt="积分订单管理" src="/pointshop/admin/product/v2/pointorders" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 积分订单管理</a>
+                        </li>
+                        <li id="POINT_SHOP_PRODUCT_CATEGORY" txt="商品分类管理" src="/pointshop/admin/productcategories/pages" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 商品分类管理</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-dashboard"></i> <span name="moduleName" style="font-size:13px;">活动管理</span> <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li id="ACTIVITY_PRODUCT_MGR" txt="商品管理" src="/systemMgr/activity/products" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 商品管理</a>
+                        </li>
+                        <li id="MALL_PRODUCT_MGR" txt="商品审核" src="/systemMgr/mallManager" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 商品审核</a>
+                        </li>
+                        <li id="SPACIAL_SALE_MGR" txt="特卖管理" src="/systemMgr/spacialSaleManager" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 特卖管理</a>
+                        </li>
+                        <li id="RED_PACKET_STRATEGY_MGR" txt="红包策略管理" src="/systemMgr/redpacketstrategy/inquiry" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 红包策略管理</a>
+                        </li>
+                        <li id="SUPPLIEG_COUPON_GROUP_MANAGER" txt="商家优惠券" src="/systemMgr/coupons/supplier/couponRecords" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 商家优惠券</a>
+                        </li>
+                        <li id="GIFTS_PRODUCT_MGR" txt="赠品管理" src="/systemMgr/product/giftsManagement/index" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 赠品管理</a>
+                        </li>
+                        <li id="GROUP_PURCHASE" txt="拼团活动" src="/systemMgr/grouppurchase/groupListPage" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 拼团活动</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-dashboard"></i> <span name="moduleName" style="font-size:13px;">广告管理</span> <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li id="WEB_ADVERTISEMENT_MGR" txt="Web商城广告管理" src="/systemMgr/advertisement/create?platform=PC" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> Web商城广告管理</a>
+                        </li>
+                        <li id="APP_ADVERTISEMENT_MGR" txt="App商城广告管理" src="/systemMgr/advertisement/create?platform=APP" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> App商城广告管理</a>
+                        </li>
+                        <li id="WEB_BIDDINGSORT_MGR" txt="竞价排序管理" src="/systemMgr/biddingsort/config" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 竞价排序管理</a>
+                        </li>
+                        <li id="WEB_STORERECOMMEND_MGR" txt="店铺推荐管理" src="/systemMgr/storerecommend/create" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 店铺推荐管理</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-dashboard"></i> <span name="moduleName" style="font-size:13px;">商城首页管理</span> <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li id="FLr_Window_Mgr" txt="PC楼层橱窗配置" src="/systemMgr/portalFloor/list" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> PC楼层橱窗配置</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-dashboard"></i> <span name="moduleName" style="font-size:13px;">集成管理</span> <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li id="integration_supplier" txt="供应商库存导入管理" src="/systemMgr/integration/supplier" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 供应商库存导入管理</a>
+                        </li>
+                        <li id="integration_brandcodes" txt="供应商品牌代码管理" src="/systemMgr/integration/brandcodes" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 供应商品牌代码管理</a>
+                        </li>
+                        <li id="integration_exceptive" txt="供应商例外零件配置" src="/systemMgr/integration/exceptive/get" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> 供应商例外零件配置</a>
+                        </li>
+                        <li id="integration_biinit" txt="bi数据初始化" src="/systemMgr/integration/config" class="active">
+                            <a href="javascript:void(0)" onclick="openMenuPage(this);" style="font-size:13px;"><i class="fa fa-circle-o"></i> bi数据初始化</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+    </aside>
+</head>
+<body>
+
+</body>
+</html>
