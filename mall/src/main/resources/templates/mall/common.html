@@ -13,13 +13,13 @@
     <script>
         //        <![CDATA[
         var layer;
-        layui.use(["layer","element"],function () {
+        layui.use(["layer", "element"], function () {
             layer = layui.layer;
         });
         //JavaScript代码区域
         //        ]]>
     </script>
-    <div class="layui-main">
+    <div class="layui-main" style="float: left">
         <a class="logo" href="/mall/index.html">
             <img th:src="@{/image/logo.png}"/>
         </a>
@@ -28,10 +28,10 @@
         <!---->
         <!--</ul>-->
         <ul class="layui-nav layui-layout-left" lay-filter="">
-            <li class="layui-nav-item layui-this" ><a href="">首页</a> </li>
-            <li class="layui-nav-item" ><a href="">发布询价</a> </li>
-            <li class="layui-nav-item " ><a href="">查看报价</a> </li>
-            <li class="layui-nav-item" ><a href="">订单查看</a> </li>
+            <li class="layui-nav-item layui-this"><a href="/mall/index.html">首页</a></li>
+            <li class="layui-nav-item"><a href="">发布询价</a></li>
+            <li class="layui-nav-item "><a href="">查看报价</a></li>
+            <li class="layui-nav-item"><a href="/mall/order/toList.html">订单查看</a></li>
         </ul>
 
         <ul class="layui-nav layui-layout-right">
@@ -47,7 +47,7 @@
                         if (data.state == 0) {
                             var list = $("#category");
                             $(data.data).each(function (index, item) {
-                                var cat = $("<dd><a href='/mall/product/category.html?cid="+item.id+"'>" + item.cname + "</a></dd>");
+                                var cat = $("<dd><a href='/mall/product/category.html?cid=" + item.id + "'>" + item.cname + "</a></dd>");
                                 list.append(cat);
                             })
                         } else {
@@ -57,19 +57,23 @@
                     //                    ]]>
                 </script>
             </li>
-            <li class="layui-nav-item">
+            <li class="layui-nav-item" >
                 <a href="javascript:;">
                     <i class="fa fa-user-circle"></i>&nbsp;
                     <span th:if="${session.user == null}">请登陆</span>
                     <span th:if="${session.user != null}" th:text="'欢迎您!&nbsp;' + ${session.user.username}">请登陆</span>
-                    <span th:if="${session.user != null}" th:text="'欢迎您！开发者@jaken;'">用户栏</span>
                 </a>
                 <dl class="layui-nav-child">
-                    <dd th:if="${session.user != null}"><a href="/mall/user/logout.do"><i class="fa fa-sign-out"></i> 退出登录</a></dd>
-                    <dd th:if="${session.user != null}"><a href="/mall/order/toList.html"><i class="fa fa-list"></i> 我的订单</a></dd>
-                    <dd th:if="${session.user != null}"><a href="/mall/product/toCart.html"><i class="fa fa-shopping-cart"></i> 购物车</a></dd>
-                    <dd th:if="${session.user == null}"><a href="/mall/user/toLogin.html"><i class="fa fa-sign-in"></i> 登录</a></dd>
-                    <dd th:if="${session.user == null}"><a href="/mall/user/toRegister.html"><i class="fa fa-user-plus"></i> 注册</a></dd>
+                    <dd th:if="${session.user != null}"><a href="/mall/user/logout.do"><i class="fa fa-sign-out"></i>
+                        退出登录</a></dd>
+                    <dd th:if="${session.user != null}"><a href="/mall/order/toList.html"><i class="fa fa-list"></i>
+                        我的订单</a></dd>
+                    <dd th:if="${session.user != null}"><a href="/mall/product/toCart.html"><i
+                            class="fa fa-shopping-cart"></i> 购物车</a></dd>
+                    <dd th:if="${session.user == null}"><a href="/mall/user/toLogin.html"><i class="fa fa-sign-in"></i>
+                        登录</a></dd>
+                    <dd th:if="${session.user == null}"><a href="/mall/user/toRegister.html"><i
+                            class="fa fa-user-plus"></i> 注册</a></dd>
                 </dl>
             </li>
             <!--<li class="layui-nav-item"><a href="">退了</a></li>-->
@@ -79,7 +83,7 @@
 
 <!--底部模块-->
 <div class="footer footer-index" th:fragment="foot">
-    <hr style="color: #c2c2c2;" />
+    <hr style="color: #c2c2c2;"/>
     <!-- 底部固定区域 -->
     © jaken 2019
     <a href="/mall/admin/toLogin.html">后台管理系统</a>
@@ -92,37 +96,37 @@
 
             <script>
                 var layer;
-                layui.use(["layer","element"],function () {
+                layui.use(["layer", "element"], function () {
                     layer = layer.layer;
                 })
             </script>
 
-            <div class="layui-main" >
-                <nav style="position: fixed;top: 0px;">
-                <ul class="layui-nav layui-nav-tree layui-nav-side layui-bg-cyan" >
-                    <li class="layui-nav-item layui-nav-itemed layui-this">
-                        <a href="javascript:;">默认商品展示</a>
-                        <dl class="layui-nav-child">
-                            <dd> <a href="javascript:;">热销商品</a></dd>
-                            <dd> <a href="javascript:;">推荐商品</a></dd>
-                        </dl>
-                    </li>
-                    <li class="layui-nav-item">
-                        <a>分类</a>
-                        <dl class="layui-nav-child">
-                            <dd><a href="">优质油品</a></dd>
-                            <dd><a href="">过滤系统</a></dd>
-                            <dd><a href="">雨刮系统</a></dd>
-                            <dd><a href="">点火系统</a></dd>
-                            <dd><a href="">冷却系统</a></dd>
-                            <dd><a href="">敬请期待</a></dd>
-                        </dl>
-                    </li>
+            <div class="layui-main">
+                <nav style="position: fixed;top: auto;">
+                    <ul class="layui-nav layui-nav-tree layui-nav-side layui-bg-cyan">
+                        <li class="layui-nav-item layui-nav-itemed layui-this">
+                            <a href="javascript:;">商品展示</a>
+                            <dl class="layui-nav-child">
+                                <dd><a href="#product_hot">热销商品</a></dd>
+                                <dd><a href="#product_new">推荐商品</a></dd>
+                            </dl>
+                        </li>
+                        <li class="layui-nav-item">
+                            <a>汽配分类</a>
+                            <dl class="layui-nav-child">
+                                <dd><a href="">优质油品</a></dd>
+                                <dd><a href="">过滤系统</a></dd>
+                                <dd><a href="">雨刮系统</a></dd>
+                                <dd><a href="">点火系统</a></dd>
+                                <dd><a href="">冷却系统</a></dd>
+                                <dd><a href="">敬请期待</a></dd>
+                            </dl>
+                        </li>
 
-                    <li class="layui-nav-item"><a href="">推广系列</a></li>
-                    <li class="layui-nav-item"><a href="">待定系列</a></li>
+                        <li class="layui-nav-item"><a href="">推广系列</a></li>
+                        <li class="layui-nav-item"><a href="">待定系列</a></li>
 
-                </ul>
+                    </ul>
                 </nav>
             </div>
         </div>
