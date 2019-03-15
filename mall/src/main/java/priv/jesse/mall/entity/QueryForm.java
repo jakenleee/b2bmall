@@ -2,17 +2,22 @@ package priv.jesse.mall.entity;
 
 
 
-/*
-* 询价
-* */
 
 
 import org.springframework.data.annotation.Id;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.Table;
 import java.util.Objects;
 
+
+/*
+ * 询价
+ * */
+@Entity
+@Table(name = "`Query`")
 public class QueryForm {
 
     /*
@@ -26,31 +31,37 @@ public class QueryForm {
     /*
     *商品ID
     * */
+    @Column
     private int productiId;
 
     /*
     *商品名称
     */
+    @Column
     private String productTitle;
 
     /*
     * 商品数量
     * */
+    @Column
     private int productNum;
 
     /*
     * 市场价
     * */
+    @Column
     private double marketPrice;
 
     /*
     * 商城价格
     * */
+    @Column
     private double shopPrice;
 
     /*
     * 是否有存货
     * */
+    @Column
     private Integer isOk;
 
     public QueryForm(int productiId, String productTitle, int productNum, double marketPrice, double shopPrice, Integer isOk) {
