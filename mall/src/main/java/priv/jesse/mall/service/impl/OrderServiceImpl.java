@@ -135,7 +135,8 @@ public class OrderServiceImpl implements OrderService {
      */
     @Override
     @Transactional
-    public void submit(String name, String phone, String addr, HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public void submit(String name, String phone, String addr,
+                       HttpServletRequest request, HttpServletResponse response) throws Exception {
         Object user = request.getSession().getAttribute("user");
         if (user == null)
             throw new LoginException("请登录！");

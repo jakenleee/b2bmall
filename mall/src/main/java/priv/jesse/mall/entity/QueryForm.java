@@ -1,92 +1,113 @@
 package priv.jesse.mall.entity;
-
-
-
-
-
-import org.springframework.data.annotation.Id;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
+import java.util.Date;
 
-
-/*
+/**
  * 询价
- * */
+ */
+
 @Entity
-@Table(name = "`Query`")
-public class QueryForm {
+@Table(name = "enquiry")
+public class QueryForm implements Serializable{
 
-    /*
+    /**
     * 询价单ID
-    * */
+    */
+
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
-    private int enquiryId;
+    private int id;
 
-    /*
+    /**
     *商品ID
-    * */
-    @Column
-    private int productiId;
+    */
 
-    /*
+    @Column
+    private int productId;
+
+    /**
     *商品名称
     */
+
     @Column
     private String productTitle;
 
-    /*
+    /**
     * 商品数量
-    * */
+    */
+
     @Column
     private int productNum;
 
-    /*
+    /**
     * 市场价
-    * */
+    */
+
     @Column
     private double marketPrice;
 
-    /*
+   /**
     * 商城价格
-    * */
+    */
     @Column
     private double shopPrice;
 
-    /*
+    /**
     * 是否有存货
-    * */
+    */
+
     @Column
     private Integer isOk;
 
-    public QueryForm(int productiId, String productTitle, int productNum, double marketPrice, double shopPrice, Integer isOk) {
-        this.productiId = productiId;
-        this.productTitle = productTitle;
-        this.productNum = productNum;
-        this.marketPrice = marketPrice;
-        this.shopPrice = shopPrice;
-        this.isOk = isOk;
+    /**
+     * 订单状态 1:未付款 2:等待发货 3:等待收货 4:订单完成
+     * */
+    @Column
+    private Integer state;
+    /**
+     * 询价单时间
+     * */
+    @Column
+    private Date queryFormTime;
+
+
+
+
+
+    public Date getQueryFormTime() {
+        return queryFormTime;
     }
 
-    public int getEnquiryId() {
-        return enquiryId;
+    public void setQueryFormTime(Date queryFormTime) {
+        this.queryFormTime = queryFormTime;
     }
 
-    public void setEnquiryId(int enquiryId) {
-        this.enquiryId = enquiryId;
+    public Integer getState() {
+        return state;
     }
 
-    public int getProductiId() {
-        return productiId;
+    public void setState(Integer state) {
+        this.state = state;
     }
 
-    public void setProductiId(int productiId) {
-        this.productiId = productiId;
+    @org.springframework.data.annotation.Id
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getProductId() {
+        return productId;
+    }
+
+    public void setProductId(int productId) {
+        this.productId = productId;
     }
 
     public String getProductTitle() {
@@ -133,21 +154,37 @@ public class QueryForm {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         QueryForm queryForm = (QueryForm) o;
-        return enquiryId == queryForm.enquiryId &&
-                productiId == queryForm.productiId &&
-                productNum == queryForm.productNum &&
-                Double.compare(queryForm.marketPrice, marketPrice) == 0 &&
-                Double.compare(queryForm.shopPrice, shopPrice) == 0 &&
-                productTitle.equals(queryForm.productTitle) &&
-                isOk.equals(queryForm.isOk);
+
+        if (id != queryForm.id) return false;
+        if (productId != queryForm.productId) return false;
+        if (productNum != queryForm.productNum) return false;
+        if (Double.compare(queryForm.marketPrice, marketPrice) != 0) return false;
+        if (Double.compare(queryForm.shopPrice, shopPrice) != 0) return false;
+        if (!productTitle.equals(queryForm.productTitle)) return false;
+        if (!isOk.equals(queryForm.isOk)) return false;
+        if (!state.equals(queryForm.state)) return false;
+        return queryFormTime.equals(queryForm.queryFormTime);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(enquiryId, productiId, productTitle, productNum, marketPrice, shopPrice, isOk);
+        int result;
+        long temp;
+        result = id;
+        result = 31 * result + productId;
+        result = 31 * result + productTitle.hashCode();
+        result = 31 * result + productNum;
+        temp = Double.doubleToLongBits(marketPrice);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(shopPrice);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        result = 31 * result + isOk.hashCode();
+        result = 31 * result + state.hashCode();
+        result = 31 * result + queryFormTime.hashCode();
+        return result;
     }
-
 
     //返回一个jason格式的数据
     @Override
@@ -156,13 +193,15 @@ public class QueryForm {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash=").append(hashCode());
-        sb.append(", enquiryId=").append(enquiryId);
-        sb.append(", productiId=").append(productiId);
+        sb.append(", enquiryId=").append(id);
+        sb.append(", productiId=").append(productId);
         sb.append(", productTitle='").append(productTitle);
         sb.append(", productNum=").append(productNum);
         sb.append(", marketPrice=").append(marketPrice);
         sb.append(", shopPrice=").append(marketPrice);
         sb.append(", isOk=").append(isOk);
+        sb.append(", state=").append(state);
+        sb.append(", queryFormTime=").append(queryFormTime);
         sb.append("]");
         return sb.toString();
     }

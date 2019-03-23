@@ -1,31 +1,22 @@
 package priv.jesse.mall.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import priv.jesse.mall.entity.OrderItem;
 import priv.jesse.mall.entity.Product;
 import priv.jesse.mall.entity.User;
 import priv.jesse.mall.service.ProductService;
-import priv.jesse.mall.service.ShopCartService;
-import priv.jesse.mall.service.exception.LoginException;
+import priv.jesse.mall.service.QueryCartService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
-/**
- * @author lzj
- * @date 2019/03/21
- */
-@Service
-public class ShopCartServiceImpl implements ShopCartService {
+public class QueryCartServiceImpl implements QueryCartService {
 
     @Autowired
     private ProductService productService;
-
     /**
      * 加购物车
      * 将商品id保存到Session中List<Integer>中
@@ -34,17 +25,19 @@ public class ShopCartServiceImpl implements ShopCartService {
      * @param request
      */
     @Override
-    public void addCart(int productId, HttpServletRequest request) throws Exception {
+    public void addQueryCart(int productId, HttpServletRequest request) throws Exception {
         User loginUser = (User) request.getSession().getAttribute("user");
-        if (loginUser == null)
-            throw new Exception("未登录！请重新登录");
-        List<Integer> productIds = (List<Integer>) request.getSession().getAttribute(NAME_PREFIX + loginUser.getId());
-        if (productIds == null) {
+        if (loginUser==null){
+            throw new Exception("亲~未登录，请重新登陆!");
+        }
+        List productIds = (List) request.getSession().getAttribute(NAME_PREFIX+ loginUser.getId());
+        if (productIds == null){
             productIds = new ArrayList<>();
-            request.getSession().setAttribute(NAME_PREFIX + loginUser.getId(), productIds);
+            request.getSession().setAttribute(NAME_PREFIX + loginUser.getId(),productIds);
         }
         productIds.add(productId);
     }
+
 
     /**
      * 移除
@@ -55,18 +48,20 @@ public class ShopCartServiceImpl implements ShopCartService {
      * @param request
      */
     @Override
-    public void remove(int productId, HttpServletRequest request) throws Exception {
-        User loginUser = (User) request.getSession().getAttribute("user");
-        if (loginUser == null)
-            throw new Exception("未登录！请重新登录");
+    public void removeQueryCart(int productId, HttpServletRequest request) throws Exception {
+       User loginUser = (User) request.getSession().getAttribute("user");
+        if (loginUser == null){
+            throw new Exception("亲~未登录，请重新登陆");
+        }
         List<Integer> productIds = (List<Integer>) request.getSession().getAttribute(NAME_PREFIX + loginUser.getId());
         Iterator<Integer> iterator = productIds.iterator();
-        while (iterator.hasNext()) {
-            if (productId == iterator.next()) {
+        while (iterator.hasNext()){
+            if (productId == iterator.next()){
                 iterator.remove();
             }
         }
     }
+
 
     /**
      * 查看购物车
@@ -77,18 +72,17 @@ public class ShopCartServiceImpl implements ShopCartService {
      * @return
      */
     @Override
-    public List<OrderItem> listCart(HttpServletRequest request) throws Exception {
+    public List<OrderItem> listQueryCart(HttpServletRequest request) throws Exception {
         User loginUser = (User) request.getSession().getAttribute("user");
         if (loginUser == null)
-            throw new Exception("未登录！请重新登录");
-        List<Integer> productIds = (List<Integer>) request.getSession().getAttribute(NAME_PREFIX + loginUser.getId());
-        // key: productId value:OrderItem
-        Map<Integer, OrderItem> productMap = new HashMap<>();
+            throw new Exception("亲~未登录，请重新登陆");
+        List<Integer> productIds = (List) request.getSession().getAttribute(NAME_PREFIX + loginUser.getId());
+        HashMap<Integer,OrderItem> productMap = new HashMap<>();
         if (productIds == null){
             return new ArrayList<>();
         }
-        // 遍历List中的商品id，每个商品Id对应一个OrderItem
-        for (Integer productId : productIds) {
+        //遍历List中的商品Id，每个商品Id对应一个OrderItem，通过Map封装
+        for (Integer productId: productIds) {
             if (productMap.get(productId) == null) {
                 Product product = productService.findById(productId);
                 OrderItem orderItem = new OrderItem();
@@ -97,16 +91,16 @@ public class ShopCartServiceImpl implements ShopCartService {
                 orderItem.setCount(1);
                 orderItem.setSubTotal(product.getShopPrice());
                 productMap.put(productId, orderItem);
-            } else {
+            }else {
+                //遍历着将订单中的商品数量叠加，价格叠加
                 OrderItem orderItem = productMap.get(productId);
+                Double subTotal = orderItem.getSubTotal();
+                orderItem.setSubTotal(orderItem.getSubTotal() + subTotal);
                 int count = orderItem.getCount();
                 orderItem.setCount(++count);
-                Double subTotal = orderItem.getSubTotal();
-                orderItem.setSubTotal(orderItem.getSubTotal()+subTotal);
-                productMap.put(productId, orderItem);
             }
         }
-        List<OrderItem> orderItems = new ArrayList<>(productMap.values());
+        ArrayList<OrderItem> orderItems = new ArrayList<>(productMap.values());
         return orderItems;
     }
 }
