@@ -97,6 +97,13 @@ public class ProductController {
     public String toCart(){
         return "mall/product/cart";
     }
+    /**
+     * 询价购物车
+     * */
+    @RequestMapping("/toEnquiryCart.html")
+    public String toEnquiryCart(){
+        return "mall/enquiry/enquiryCart";
+    }
 
     /**
      * 按一级分类查找商品

@@ -4,6 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.servlet.ServletComponentScan;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
@@ -14,8 +15,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * @EnableScheduling 启用定时任务
  * @EnableTransactionManagement 开启事务
  *
- * @author hfb
- * @date 2017/9/18 11:13
+ * @author lzj
+ * @date 2019/3/18 11:13
  */
 @ServletComponentScan
 @EnableConfigurationProperties

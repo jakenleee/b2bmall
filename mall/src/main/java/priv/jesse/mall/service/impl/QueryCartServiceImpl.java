@@ -1,8 +1,9 @@
 package priv.jesse.mall.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import priv.jesse.mall.entity.OrderItem;
+import org.springframework.stereotype.Service;
 import priv.jesse.mall.entity.Product;
+import priv.jesse.mall.entity.QueryItem;
 import priv.jesse.mall.entity.User;
 import priv.jesse.mall.service.ProductService;
 import priv.jesse.mall.service.QueryCartService;
@@ -13,6 +14,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
+@Service
 public class QueryCartServiceImpl implements QueryCartService {
 
     @Autowired
@@ -64,20 +66,20 @@ public class QueryCartServiceImpl implements QueryCartService {
 
 
     /**
-     * 查看购物车
+     * 查看询价购物车
      *
-     * 查询出session的List中所有的商品Id,并封装成List<OrderItem>返回
+     * 查询出session的List中所有的商品Id,并封装成List<queryItem>返回
      *
      * @param request
      * @return
      */
     @Override
-    public List<OrderItem> listQueryCart(HttpServletRequest request) throws Exception {
+    public List<QueryItem> listQueryCart(HttpServletRequest request) throws Exception {
         User loginUser = (User) request.getSession().getAttribute("user");
         if (loginUser == null)
             throw new Exception("亲~未登录，请重新登陆");
         List<Integer> productIds = (List) request.getSession().getAttribute(NAME_PREFIX + loginUser.getId());
-        HashMap<Integer,OrderItem> productMap = new HashMap<>();
+        HashMap<Integer,QueryItem> productMap = new HashMap<>();
         if (productIds == null){
             return new ArrayList<>();
         }
@@ -85,22 +87,22 @@ public class QueryCartServiceImpl implements QueryCartService {
         for (Integer productId: productIds) {
             if (productMap.get(productId) == null) {
                 Product product = productService.findById(productId);
-                OrderItem orderItem = new OrderItem();
-                orderItem.setProduct(product);
-                orderItem.setProductId(productId);
-                orderItem.setCount(1);
-                orderItem.setSubTotal(product.getShopPrice());
-                productMap.put(productId, orderItem);
+                QueryItem queryItem = new QueryItem();
+                queryItem.setProduct(product);
+                queryItem.setProductId(productId);
+                queryItem.setProductNum(1);
+                queryItem.setSubTotal(product.getShopPrice());
+                productMap.put(productId, queryItem);
             }else {
-                //遍历着将订单中的商品数量叠加，价格叠加
-                OrderItem orderItem = productMap.get(productId);
-                Double subTotal = orderItem.getSubTotal();
-                orderItem.setSubTotal(orderItem.getSubTotal() + subTotal);
-                int count = orderItem.getCount();
-                orderItem.setCount(++count);
+                //遍历着将订单中已有的商品数量叠加，价格叠加
+                QueryItem queryItem = productMap.get(productId);
+                Double subTotal = queryItem.getSubTotal();
+                queryItem.setSubTotal(queryItem.getSubTotal() + subTotal);
+                int count = queryItem.getProductNum();
+                queryItem.setProductNum(++count);
             }
         }
-        ArrayList<OrderItem> orderItems = new ArrayList<>(productMap.values());
-        return orderItems;
+        ArrayList<QueryItem> queryItems = new ArrayList<>(productMap.values());
+        return queryItems;
     }
 }

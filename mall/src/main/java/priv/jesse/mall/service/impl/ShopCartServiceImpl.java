@@ -84,7 +84,7 @@ public class ShopCartServiceImpl implements ShopCartService {
         List<Integer> productIds = (List<Integer>) request.getSession().getAttribute(NAME_PREFIX + loginUser.getId());
         // key: productId value:OrderItem
         Map<Integer, OrderItem> productMap = new HashMap<>();
-        if (productIds == null){
+         if (productIds == null){
             return new ArrayList<>();
         }
         // 遍历List中的商品id，每个商品Id对应一个OrderItem

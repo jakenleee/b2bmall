@@ -132,6 +132,9 @@ public class OrderServiceImpl implements OrderService {
      * @param addr
      * @param request
      * @param response
+     * des:一个订单order里有包含多个订单项orderItem，在前面已经用ListCart将订单里的订单项一一对应，这里做的是将
+     * 订单项与订单联系起来，orderItem.setOrderId(order.getId())将订单项归类到订单中；将orderItems 中的价格汇总
+     * 设置回order中
      */
     @Override
     @Transactional
@@ -157,6 +160,7 @@ public class OrderServiceImpl implements OrderService {
             total += orderItem.getSubTotal();
             orderItemDao.save(orderItem);
         }
+        //获取到orderItems的总价格设置会order
         order.setTotal(total);
         orderDao.save(order);
         //重定向到订单列表页面

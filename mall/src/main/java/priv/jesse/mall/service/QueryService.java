@@ -1,12 +1,15 @@
 package priv.jesse.mall.service;
 
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.HttpRequest;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.stereotype.Service;
+import priv.jesse.mall.entity.Enquiry;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
+@ComponentScan
 public interface QueryService {
 
     /**
@@ -18,12 +21,36 @@ public interface QueryService {
     int STATE_COMPLETE = 4;
 
 
-    @RequestMapping(value = "/getQueryList", method = RequestMethod.GET)
-    public void getQueryList(HttpRequest request) throws Exception;
+
+    /**
+     * 创建
+     *
+     * @param enquiry
+     * @return
+     * */
+
+    int create(Enquiry enquiry);
 
 
-    @RequestMapping(value = "/submitQueryList", method = RequestMethod.POST)
-    public void submitQueryList(Integer id, int productId, HttpServletRequest request,
+
+    /**
+     *获取询价单列表
+     * */
+     void getQueryList(HttpRequest request) throws Exception;
+
+
+    /**
+     * 提交询价单列表
+     * */
+     void submitQueryList(String name, String phone, String addr,
+                                HttpServletRequest request, HttpServletResponse response) throws Exception;
+
+
+    /**
+     * 提交新的询价需求
+     * */
+    public String submitEnquiry(int productId, String productTitle,
+                                String productType, int productNum,
+                                String desc, HttpServletRequest request,
                                 HttpServletResponse response) throws Exception;
-
 }

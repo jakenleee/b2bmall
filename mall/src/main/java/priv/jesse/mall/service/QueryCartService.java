@@ -1,14 +1,14 @@
 package priv.jesse.mall.service;
 
 import org.apache.ibatis.annotations.Param;
-import priv.jesse.mall.entity.OrderItem;
+import priv.jesse.mall.entity.QueryItem;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 public interface QueryCartService {
 
-    String NAME_PREFIX = "query_cart-";
+    String NAME_PREFIX = "query_cart_";
 
     /**
      * 添加到询价购物车
@@ -28,6 +28,6 @@ public interface QueryCartService {
      * @param request
      * @return
      */
-    List<OrderItem> listQueryCart(HttpServletRequest request) throws Exception;
+    List<QueryItem> listQueryCart(HttpServletRequest request) throws Exception;
 
 }
