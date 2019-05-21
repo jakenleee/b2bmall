@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
     <meta name="renderer" content="webkit"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>SkyMall | 商城</title>
+    <title>Car-autoPart-Mall | 商城</title>
     <link rel="stylesheet" th:href="@{/layui/css/layui.css}"/>
     <link th:href="@{/css/font-awesome.min.css}" rel="stylesheet" type="text/css"/>
     <link th:href="@{/css/common.css}" rel="stylesheet" type="text/css"/>
     <script th:src="@{/layui/jquery-3.2.1.min.js}"></script>
     <script th:src="@{/layui/layui.js}"></script>
+
     <style>
         #list {
 
@@ -64,7 +65,7 @@
                             </div>
                         </div>
                         <div class="portlet-body">
-                            <form class="form-horizontal"  >
+                            <form class="form-horizontal" enctype="multipart/form-data" >
                                 <div class="control-group">
                                     <label class="control-label">配件型号：</label>
                                     <div class="controls">
@@ -99,8 +100,21 @@
                                         <textarea name="desc" class="large m-wrap" rows="5" cols="50"></textarea>
                                     </div>
                                 </div>
+                                <div class="control-group">
+                                    <label class="control-label">商品图片：</label>
+                                    <div class="controls">
+                                        <div class="fileupload fileupload-new" data-provides="fileupload">
+											<span class="btn btn-file">
+												<span class="fileupload-new">选择图片</span>
+												<span class="fileupload-exists">换一张</span>
+												<input name="image" type="file" class="default"/>
+											</span>
+                                                <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">移除</a>
+                                            </div>
+                                        </div>
+                                </div>
                                 <div class="form-actions">
-                                    <button type="button" onclick="submit2()" class="btn blue"><i class="fa fa-check"></i>确定</button>&emsp;
+                                    <button type="button" onclick="submitToCon()" class="btn blue"><i class="fa fa-check"></i>确定</button>&emsp;
                                     <button type="reset" class="btn green"><i class="fa fa-mail-reply"></i>重置</button>&emsp;
                                     <button type="button" id="back" class="btn"><i class="fa fa-times"></i>返回</button>
                                 </div>
@@ -249,8 +263,9 @@
 </div>
 <!--底部-->
 <div th:replace="mall/common::foot"></div>
+<script type="text/javascript" th:src="@{/js/bootstrap-fileupload.js}"></script>
 <script type="text/javascript">
-    function submit2(){
+    function submitToCon(){
         if(!confirm("确定发布询价单？")){
             return;
         }
@@ -258,6 +273,7 @@
         $.ajax({
             cache: true,
             type: "POST",
+            fileElementId:'img',
             url:"submitEnquiry.do",
             data:$('.form-horizontal').serialize(),// 你的formid
             async: false,

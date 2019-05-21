@@ -51,6 +51,6 @@ public interface QueryService {
      * */
     public String submitEnquiry(int productId, String productTitle,
                                 String productType, int productNum,
-                                String desc, HttpServletRequest request,
+                                String desc,String imgeUrl, HttpServletRequest request,
                                 HttpServletResponse response) throws Exception;
 }

@@ -78,7 +78,7 @@ public class QueryServiceImpl implements QueryService {
     @Override
     public String submitEnquiry(int productId, String productTitle,
                                 String productType, int productNum,
-                                String desc, HttpServletRequest request,
+                                String desc, String imgeUrl,HttpServletRequest request,
                                 HttpServletResponse response) throws Exception {
         Object user = request.getSession().getAttribute("user");
         if (user == null)
@@ -93,6 +93,7 @@ public class QueryServiceImpl implements QueryService {
         enquiry.setCount(productNum);
         enquiry.setBuyer_id(loginUser.getId());
         enquiry.setDesc(desc);
+        enquiry.setImgeUrl(imgeUrl);
         enquiry.setPdate(new Date());
         enquiryDao.save(enquiry);
         return null;

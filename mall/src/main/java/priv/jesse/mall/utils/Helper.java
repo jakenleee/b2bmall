@@ -1,8 +1,8 @@
 package priv.jesse.mall.utils;
 
 /**
- * @author hfb
- * @date 2017/9/29
+ * @author zejian.li
+ * @date 2019/2/29
  */
 public class Helper {
     private static String key = "wow!@#$%";

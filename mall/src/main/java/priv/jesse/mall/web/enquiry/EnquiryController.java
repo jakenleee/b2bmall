@@ -5,7 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import priv.jesse.mall.service.QueryService;
+import priv.jesse.mall.utils.FileUtil;
 
 
 import javax.annotation.Resource;
@@ -46,20 +48,22 @@ public class EnquiryController {
     }
 
     /**
-     * 发布询价（发布询价且消息被消费）
+     * 发布询价b
      * */
     @RequestMapping(value = "/submitEnquiry.do", method = RequestMethod.POST)
-    public String submitEnquiry(int productId,
+    public void submitEnquiry(MultipartFile image,
+                                int productId,
                                 String productTitle,
                                 String productType,
                                 int productNum,
                                 String desc,
+
                                 HttpServletRequest request,
                                 HttpServletResponse response
                                 ) throws Exception {
+        String imgUrl = FileUtil.saveFile(image);
+        queryService.submitEnquiry(productId,productTitle,productType,productNum,desc,imgUrl,request,response);
 
-        queryService.submitEnquiry(productId,productTitle,productType,productNum,desc,request,response);
-        return null;
-    }
+        }
 
 }

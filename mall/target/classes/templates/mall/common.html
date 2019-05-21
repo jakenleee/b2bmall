@@ -21,7 +21,7 @@
     </script>
     <div class="layui-main" style="float: left">
         <a class="logo" href="/mall/index.html">
-            <img th:src="@{/image/logo.png}"/>
+            <img th:src="@{/image/house_logo.png}"/>
         </a>
         <!-- 头部区域（可配合layui已有的水平导航） -->
         <!--<ul class="layui-nav layui-layout-left">-->
@@ -98,7 +98,7 @@
 <!--左侧 导航栏模块-->
 <aside class="main-sidebar">
     <section class="sidebar">
-        <div class="layui-layout-left" th:fragment="left">
+        <div class="layui-layout-left" th:fragment="left" style="top: 60px">
 
             <script>
                 var layer;
@@ -107,10 +107,10 @@
                 })
             </script>
 
-            <div class="layui-main" style="top: 60px; bottom: 80px">
-                <nav style="top: 60px ;bottom:60px;">
+            <div class="layui-main" >
+                <nav style="top: 60px">
                     <ul class="layui-nav layui-nav-tree layui-nav-side layui-bg-cyan">
-                        <li class="layui-nav-item layui-nav-itemed layui-this">
+                        <li class="layui-nav-item layui-nav-itemed">
                             <a href="javascript:;">商品展示</a>
                             <dl class="layui-nav-child">
                                 <dd><a href="#product_hot">热销商品</a></dd>
@@ -126,9 +126,9 @@
                         <dd><a href="">冷却系统</a></dd>
                         <dd><a href="">敬请期待</a></dd>-->
 
-                        <li class="layui-nav-item" style="color:#393D49;">
+                        <li class="layui-nav-item layui-nav-itemed" style="color:#393D49;">
                             <a href="javascript:;">分类</a>
-                            <dl class="layui-nav-child" id="category">
+                            <dl class="layui-nav-child layui-nav-itemed" id="category">
 
                             </dl>
                             <script>

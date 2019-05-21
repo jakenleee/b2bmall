@@ -37,7 +37,7 @@ public class Enquiry {
      * 是否热门商品
      */
     @Column
-    private Integer isHot;
+    private String imgeUrl;
 
     /**
      * 商品创建日期
@@ -102,12 +102,12 @@ public class Enquiry {
         this.desc = desc;
     }
 
-    public Integer getIsHot() {
-        return isHot;
+    public String getImgeUrl() {
+        return imgeUrl;
     }
 
-    public void setIsHot(Integer isHot) {
-        this.isHot = isHot;
+    public void setImgeUrl(String imgeUrl) {
+        this.imgeUrl = imgeUrl;
     }
 
     public Date getPdate() {
@@ -155,9 +155,10 @@ public class Enquiry {
         if (marketPrice != null ? !marketPrice.equals(enquiry.marketPrice) : enquiry.marketPrice != null) return false;
         if (shopPrice != null ? !shopPrice.equals(enquiry.shopPrice) : enquiry.shopPrice != null) return false;
         if (desc != null ? !desc.equals(enquiry.desc) : enquiry.desc != null) return false;
-        if (isHot != null ? !isHot.equals(enquiry.isHot) : enquiry.isHot != null) return false;
+        if (imgeUrl != null ? !imgeUrl.equals(enquiry.imgeUrl) : enquiry.imgeUrl != null) return false;
         if (pdate != null ? !pdate.equals(enquiry.pdate) : enquiry.pdate != null) return false;
-        return count != null ? count.equals(enquiry.count) : enquiry.count == null;
+        if (count != null ? !count.equals(enquiry.count) : enquiry.count != null) return false;
+        return productType != null ? productType.equals(enquiry.productType) : enquiry.productType == null;
     }
 
     @Override
@@ -167,10 +168,11 @@ public class Enquiry {
         result = 31 * result + (marketPrice != null ? marketPrice.hashCode() : 0);
         result = 31 * result + (shopPrice != null ? shopPrice.hashCode() : 0);
         result = 31 * result + (desc != null ? desc.hashCode() : 0);
-        result = 31 * result + (isHot != null ? isHot.hashCode() : 0);
+        result = 31 * result + (imgeUrl != null ? imgeUrl.hashCode() : 0);
         result = 31 * result + (pdate != null ? pdate.hashCode() : 0);
         result = 31 * result + (count != null ? count.hashCode() : 0);
         result = 31 * result + buyer_id;
+        result = 31 * result + (productType != null ? productType.hashCode() : 0);
         return result;
     }
 
@@ -182,7 +184,7 @@ public class Enquiry {
                 ", marketPrice=" + marketPrice +
                 ", shopPrice=" + shopPrice +
                 ", desc='" + desc + '\'' +
-                ", isHot=" + isHot +
+                ", imgeUrl='" + imgeUrl + '\'' +
                 ", pdate=" + pdate +
                 ", count=" + count +
                 ", buyer_id=" + buyer_id +
